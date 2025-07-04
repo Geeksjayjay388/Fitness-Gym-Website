@@ -1,9 +1,10 @@
 import { FaDumbbell, FaFemale, FaBoxOpen } from 'react-icons/fa';
 import Equipments from '../components/Equipments';
-function Store() {
+
+function Store({ handleAddToCart, cartCount }) {
   return (
     <main className="bg-gray-50 min-h-screen">
-      {/* Hero Section */}
+      {/* 🏋️ Hero Section */}
       <section className="bg-[url('https://wallpapercave.com/wp/wp8834031.jpg')] bg-cover bg-center text-center py-64 mb-16 relative">
         <div className="absolute inset-0 bg-black opacity-50"></div>
         <div className="relative z-10 max-w-3xl mx-auto">
@@ -16,7 +17,7 @@ function Store() {
         </div>
       </section>
 
-      {/* Cards Section */}
+      {/* 🧢 Category Cards Section */}
       <section className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto px-6 md:px-0 pb-20">
         {[
           {
@@ -40,9 +41,11 @@ function Store() {
               "https://www.performbetter.com/product_images/uploaded_images/kettlebellsonrack-420x536.jpg",
             description: "From kettlebells to yoga mats—find must-have gear to elevate any workout session.",
           },
-          
         ].map((card, index) => (
-          <div key={index} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300">
+          <div
+            key={index}
+            className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300"
+          >
             <img
               src={card.image}
               alt={card.title}
@@ -56,8 +59,10 @@ function Store() {
           </div>
         ))}
       </section>
+
+      {/* 🛍️ Equipments Grid & Cart Trigger */}
       <section>
-        <Equipments />
+        <Equipments handleAddToCart={handleAddToCart} cartCount={cartCount} />
       </section>
     </main>
   );

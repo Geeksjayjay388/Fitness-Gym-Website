@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import React from 'react';
 import { FaShoppingCart, FaUserCircle } from 'react-icons/fa';
 
-function Navbar() {
+function Navbar({cartCount}) {
   return (
     <nav className="bg-white shadow-sm">
       {/* Top Bar */}
@@ -31,10 +31,16 @@ function Navbar() {
 
         {/* Action Icons */}
         <div className="flex items-center gap-6 text-gray-700 text-xl">
-          <Link to="/cart" className="hover:text-yellow-500 transition">
-            <FaShoppingCart />
-          </Link>
-          <Link to="/profile" className="hover:text-yellow-500 transition">
+          <Link to="/cart" className="relative">
+  <FaShoppingCart className="text-black hover:text-yellow-400 text-2xl" />
+  {cartCount > 0 && (
+    <span className="absolute -top-2 -right-2 bg-red-600 text-white rounded-full text-xs px-2">
+      {cartCount}
+    </span>
+  )}
+</Link>
+
+          <Link to="/profile" className="text-black hover:text-yellow-500 transition">
             <FaUserCircle />
           </Link>
         </div>

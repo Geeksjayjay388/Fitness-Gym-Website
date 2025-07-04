@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { FaStar } from 'react-icons/fa';
 
-function Equipments() {
+function Equipments({ handleAddToCart, cartCount }) {
   const [equipments] = useState([
     
   {
@@ -170,7 +170,12 @@ function Equipments() {
   ]);
 
   return (
-    <main className="min-h-screen bg-gray-100 p-8">
+     <main className="min-h-screen bg-gray-100 p-8">
+      {/* 🔢 Cart count display */}
+      <div className="text-right text-lg font-semibold text-blue-600 mb-4">
+        🛒 Items in Cart: <span>{cartCount}</span>
+      </div>
+
       <h1 className="text-3xl font-bold text-center mb-10 text-gray-800">Featured Equipments</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 max-w-7xl mx-auto">
         {equipments.map((item) => (
@@ -193,7 +198,10 @@ function Equipments() {
             </div>
             <p className="text-gray-600 mb-1">{item.description}</p>
             <p className="text-lg font-bold text-green-700 mb-4">{item.price}</p>
-            <button className="w-full py-2 bg-blue-600 text-white font-medium rounded hover:bg-blue-700 transition">
+            <button
+              onClick={() => handleAddToCart(item)}
+              className="w-full py-2 bg-blue-600 text-white font-medium rounded hover:bg-blue-700 transition"
+            >
               Add to Cart
             </button>
           </div>
